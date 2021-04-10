@@ -1,0 +1,78 @@
+{% extends "partials/base.html" %} 
+{% load static %}
+{% block navbar %}
+    {% include 'partials/navbar.html' %}
+{% endblock navbar %}
+
+
+{% block main %}
+<div id="body">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="banner-title">
+                    <div class="top-heading mt-5 mb-5">
+                        <h1 class="text-center">Find Your Favourite Out of Print</h1>
+                    </div>
+                    <div class="bottom-heading">
+                        <h3 class="text-center">Start by Selecting A Collection</h3>
+                    </div>
+                </div>
+            </div>
+        </div>    
+        <div class="row">
+            <div class="col-md-6">
+                <div class="select-febric-by-parent mt-5">
+                    <div class="input-group mb-3">
+                        <select class="custom-select" id="inputGroupSelect01">
+                            <option selected>Parent Category</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="select-febric-by-child mt-5">
+                    <div class="input-group mb-3">
+                        <select class="custom-select" id="inputGroupSelect01">
+                            <option selected>Child Category</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="febric-cat mt-5">
+                    <p class="text-center">or <br> View All Febrics</p>
+                </div>
+                <div class="list-febric">
+                    <ul>
+                        <li> <a href="#" >TPF1</a>
+                          <ul>
+                            <li><a href="#" >Red Febrics</a></li>
+                            <li><a href="#" >Blue Febrics</a></li>
+                          </ul>
+                        </li>
+                        <li> <a href="#" >TPF2</a>
+                            <ul>
+                              <li><a href="#" >Purple Febrics</a></li>
+                              <li><a href="#" >Orange Febrics</a></li>
+                            </ul>
+                          </li>
+                      </ul>                      
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main %}
+
+
+{% block footer %}
+    {% include 'partials/footer.html' %}
+{% endblock footer %}
+    

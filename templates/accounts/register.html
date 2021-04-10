@@ -1,0 +1,41 @@
+{% extends "partials/base.html" %} 
+{% load static %}
+{% block navbar %}
+    {% include 'partials/navbar.html' %}
+{% endblock navbar %}
+{% block main %}
+<div id="body">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                    <form method="POST" action="{% url 'register' %}" class="box">
+                        {% csrf_token %}
+                        <h1>Register</h1>
+                        <p> Please enter your valid details!</p>
+                        <input type="text" name="username" placeholder="Username" required> 
+                        <input type="email" name="email" placeholder="Email" required>
+                        <input type="password" name="password" placeholder="Password" required>
+                        <input type="password" name="password" placeholder="Password" required>
+                        <a class="forgot" href="{% url 'login' %}">Already have account,Login?</a> 
+                        <input type="submit"  value="Register" >
+                        <div class="col-md-12">
+                            <ul class="social-network social-circle">
+                                <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook-f"></i></a></li>
+                                <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+                            </ul>
+                        </div>
+                    </form>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</div>
+{% endblock main %}
+
+
+{% block footer %}
+    {% include 'partials/footer.html' %}
+{% endblock footer %}
+    
