@@ -1,0 +1,45 @@
+{% extends "partials/base.html" %} 
+{% load static %}
+{% block navbar %}
+    {% include 'partials/navbar.html' %}
+{% endblock navbar %}
+
+
+{% block main %}
+<div id="body">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="select-febric-by-parent mt-5">
+                    <div class="input-group mb-3">
+                        <select class="custom-select" id="inputGroupSelect01">
+                            <option selected>Parent Category</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="select-febric-by-child mt-5">
+                    <div class="input-group mb-3">
+                        <select class="custom-select" id="inputGroupSelect01">
+                            <option selected>Child Category</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>   
+    </div>
+</div>
+{% endblock main %}
+
+
+{% block footer %}
+    {% include 'partials/footer.html' %}
+{% endblock footer %}
+    

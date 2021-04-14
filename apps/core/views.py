@@ -26,3 +26,7 @@ def terms(request):
     term = Term.objects.all().first()
     context ={'terms':term}
     return render(request, template_name, context)
+
+def submit_a_listing(request):
+    template_name ='submit_a_list.html'
+    return render(request, template_name)

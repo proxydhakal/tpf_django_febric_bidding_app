@@ -1,0 +1,49 @@
+{% extends "partials/base.html" %} 
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+{% block navbar %}
+    {% include 'partials/navbar.html' %}
+{% endblock navbar %}
+{% block main %}
+<div id="body">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                    <form method="POST" action="/accounts/signup/" class="box">
+                        {% csrf_token %}
+                        <h1>Register</h1>
+                        <p> Please enter your valid details!</p>
+                        <ul class="errorlist">
+                            {% for key, value in form.errors.items %}
+                                <li>{% if key != '__all__' %}{{ key }} {% endif %}{{ value }}</li>
+                            {% endfor %}
+                        </ul>
+                        <input type="text" name="username" placeholder="Username" required> 
+                        <input type="email" name="email" placeholder="Email" required>
+                        <input type="password" name="password" placeholder="Password" required>
+                        <input type="password" name="password" placeholder="Confirm Password" required>
+                        <a class="forgot" href="{% url 'account_login' %}">Already have account,Login?</a> 
+                        <input type="submit"  value="Register" >
+                        <div class="col-md-12">
+                            <ul class="social-network social-circle">
+                                <li><a href="{% provider_login_url 'facebook' method="oauth2" %}" class="icoFacebook" title="Facebook"><i class="fa fa-facebook-f"></i></a></li>
+                                <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="{% provider_login_url 'github' method="js_sdk" %}" class="icoGithub" title="Github"><i class="fa fa-github"></i></a></li>
+                            </ul>
+                        </div>
+                    </form>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</div>
+{% endblock main %}
+
+
+{% block footer %}
+    {% include 'partials/footer.html' %}
+{% endblock footer %}
+    

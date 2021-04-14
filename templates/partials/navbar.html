@@ -1,5 +1,5 @@
 {% load static %}
-<nav class="navbar navbar-expand-lg p-3 navbar-dark" id="navbar">
+<nav class="navbar navbar-expand-lg p-3 nnavbar-light bg-light" id="navbar">
     <div class="container">
         <a class="navbar-brand" href="{% url 'index' %}">TPF</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,18 +18,18 @@
                 <a class="nav-link" href="{% url 'profile' %}">Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                <a class="nav-link" href="/accounts/logout/">Logout</a>
             </li>
             {% else %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'login' %}">Login</a>
+                <a class="nav-link" href="{% url 'account_login' %}">Login</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'register' %}">Register</a>
+                <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
             </li>
             {% endif %}
         </ul>
-        <button class="btn btn-outline-primary my-2 my-sm-0 border border-white" id="btn" type="submit">Submit Listing</button>
+        <a class="btn my-2 my-sm-0 border border-black" id="btn" type="submit" href="{% url 'submit-list' %}">Submit Listing</a>
         </div>
     </div>
 </nav>
