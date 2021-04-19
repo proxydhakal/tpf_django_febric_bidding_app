@@ -1,16 +1,15 @@
 from django.shortcuts import render,redirect
 from django.views import View
-from apps.accounts.forms import UserRegisterForm
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
-from apps.accounts.forms import UserCreationForm, UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from apps.accounts.forms import UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 from apps.accounts.models import Profile
 
 
 @login_required
 def profile(request):
-    template_name='accounts/profile.html'
+    template_name='account/profile.html'
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form =ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)

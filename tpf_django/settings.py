@@ -88,11 +88,7 @@ TEMPLATES = [
     },
 ]
 AUTHENTICATION_BACKENDS = [
-
-    # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
-
-    # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 SITE_ID = 1
@@ -142,7 +138,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-APPEND_SLASH=False
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
@@ -155,7 +151,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 STATIC_ROOT = BASE_DIR / 'static/files'
 MEDIA_URL = '/media/'
 LOGIN_REDIRECT_URL= 'profile'
-LOGIN_URL ='login'
+LOGIN_URL ='/accounts/login'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 from django.contrib.messages import constants as messages
 

@@ -11,7 +11,7 @@ from django.db.models.signals import  post_save
 
 class Profile(models.Model):
     user= models.OneToOneField(User, on_delete=models.CASCADE,related_name='profile')
-    profile_image=models.ImageField(default='default.jpg',upload_to='media/profile_pics')
+    profile_image=models.ImageField(default='default.jpg',upload_to='profile_pics/')
     
 
     def __str__(self):
