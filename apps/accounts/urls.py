@@ -8,4 +8,5 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
    
     path('profile/', profile, name='profile'),
+    # path('<str:username>/', views.UserPostListView.as_view(), name='user-posts'),
 ]
