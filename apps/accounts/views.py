@@ -11,11 +11,23 @@ from django.shortcuts import render,get_object_or_404
 from django.contrib.auth.models import User
 from django.views.generic import ListView ,DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 @login_required
 def profile(request):
     model = ListFebric
+    paginate_by = 4
     logged_in_user = request.user
     logged_in_user_posts = ListFebric.objects.filter(user=logged_in_user)
+    paginator = Paginator(logged_in_user_posts, 3)
+    page = request.GET.get('page')
+    try:
+        post_list = paginator.page(page)
+    except PageNotAnInteger:
+            # If page is not an integer deliver the first page
+        post_list = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range deliver last page of results
+        post_list = paginator.page(paginator.num_pages)
     template_name='account/profile.html'
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
@@ -34,7 +46,7 @@ def profile(request):
     context={
         'u_form': u_form,
          'p_form': p_form,
-         'posts':logged_in_user_posts
+         'posts':post_list
     }
 
     # def get_queryset(self):

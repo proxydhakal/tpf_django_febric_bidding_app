@@ -1,0 +1,64 @@
+{% extends "partials/base.html" %} 
+{% load static %}
+{% block navbar %}
+    {% include 'partials/navbar.html' %}
+{% endblock navbar %}
+
+
+{% block main %}
+<div id="body">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="banner-title">
+                    <div class="top-heading mt-5 mb-5">
+                        <h1 class="text-center">Find Your Favourite Out of Print</h1>
+                    </div>
+                </div>
+            </div>
+        </div>     
+        <div class="row infinite-container">
+        {% for post in list_febrics %}
+            <div class="col-md-4 infinite-item">
+                    <div class="card mb-3">
+                        <img src="https://newhorizon-department-of-civil-engineering.s3.ap-south-1.amazonaws.com/nhengineering/department-of-civil-engineering/wp-content/uploads/2020/01/13102231/default-image.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <div class="d-flex bd-highlight mb-3">
+                                <div class="p-2 bd-highlight"><p class="card-text"><small class="text-muted"><i class="fa fa-star"></i>{{ post.created_at| date:"M d" }}</small></p></div>
+                                <div class="p-2 bd-highlight"><a href="#" class="card-title">{{post.title}}</a></div>
+                                <div class="p-2 bd-highlight"><p class="card-text"><small class="text-muted">${{post.price}}</small></p></div>
+                            </div>
+                            <p class="card-text"><small class="text-muted">(hayward / castro valley)</small></p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="loading" style="display: none;">
+                <p>Loading....</p>
+        </div>
+        {% if page_obj.has_next %}
+            <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}">More</a>
+        {% endif %}
+        <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+        <script src="/static/js/infinite.min.js"></script>
+        <script>
+            var infinite = new Waypoint.Infinite({
+            element: $('.infinite-container')[0],
+            onBeforePageLoad: function () {
+                $('.loading').show();
+            },
+            onAfterPageLoad: function ($items) {
+                $('.loading').hide();
+            }
+            });
+        </script>   
+    </div>
+</div>
+{% endblock main %}
+
+
+{% block footer %}
+    {% include 'partials/footer.html' %}
+{% endblock footer %}
+    

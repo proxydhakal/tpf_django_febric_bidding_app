@@ -55,3 +55,14 @@ def load_list(request):
     childs = Child.objects.filter(parent_id=parent_id).order_by('name')
     return render(request, 'child_dropdown_list.html', {'childs': childs})
 
+
+class FebricList(ListView):
+    model = ListFebric
+    ordering =['-created_at']
+    paginate_by = 4
+    context_object_name = 'list_febrics'
+    template_name = 'search_febrics.html'
+    queryset = ListFebric.objects.all()
+
+
+
