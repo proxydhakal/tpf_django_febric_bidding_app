@@ -12,11 +12,7 @@
             </li>
             <li class="nav-item">
             <a class="nav-link" href="{% url 'about' %}">How it works</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'multistepformexample' %}">Multi Form</a>
-                </li>
-            
+            </li>       
             {% if request.user.is_authenticated %}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'profile' %}">Profile</a>

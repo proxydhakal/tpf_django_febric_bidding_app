@@ -17,7 +17,7 @@ class ListFebricForm(forms.ModelForm):
             'child':Select(attrs={'class':'form-control'}),
             'title':TextInput(attrs={'class':'form-control'}),
             'price':TextInput(attrs={'class':'form-control'}),
-            'sell_at':RadioSelect(attrs={'class':'position-relative form-check-input','type':'radio'}),
+            'sell_at':RadioSelect(attrs={'class':'position-relative form-check-input text-decoration-none','type':'radio'}),
             'link_ebay':URLInput(attrs={'class':'form-control'}),
             'facebook_profile':URLInput(attrs={'class':'form-control'}),
             'instagram_profile':URLInput(attrs={'class':'form-control'}),

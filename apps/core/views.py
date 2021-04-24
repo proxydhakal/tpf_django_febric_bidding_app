@@ -25,14 +25,6 @@ class IndexView(CreateView):
         return context
 
 
-# def index(request):
-#     template_name= 'index.html'
-#     seo = SEO.objects.all().first()
-#     title = Title.objects.all().first()
-#     logo = Logo.objects.all().first()
-#     context = {'seo':seo, 'logo':logo, 'title':title}
-#     return render(request, template_name,context)
-
 def about(request):
     template_name= 'about.html'
     about = About.objects.all().first()
@@ -83,40 +75,5 @@ class FebricList(ListView):
     template_name = 'search_febrics.html'
     queryset = ListFebric.objects.all()
 
-
-
-from django.urls import reverse
-from django.contrib import messages
-from django.shortcuts import render
-from django.contrib.auth.models import User
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
-def multistepformexample(request):
-    return render(request,"multistepform.html")
-
-def multistepformexample_save(request):
-    if request.method!="POST":
-        return HttpResponseRedirect(reverse("multistepformexample"))
-    else:
-        fname=request.POST.get("fname")
-        lname=request.POST.get("lname")
-        phone=request.POST.get("phone")
-        twitter=request.POST.get("twitter")
-        facebook=request.POST.get("facebook")
-        gplus=request.POST.get("gplus")
-        email=request.POST.get("email")
-        password=request.POST.get("pass")
-        cpass=request.POST.get("cpass")
-        if password!=cpass:
-            messages.error(request,"Confirm Password Doesn't Match")
-            return HttpResponseRedirect(reverse('multistepformexample'))
-
-        try:
-            multistepform=MultiStepFormModel(fname=fname,lname=lname,phone=phone,twitter=twitter,facebook=facebook,gplus=gplus,email=email,password=password)
-            multistepform.save()
-            messages.success(request,"Data Save Successfully")
-            return HttpResponseRedirect(reverse('multistepformexample'))
-        except:
-            messages.error(request,"Error in Saving Data")
-            return HttpResponseRedirect(reverse('multistepformexample'))
 
 
