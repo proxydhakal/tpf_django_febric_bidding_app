@@ -3,6 +3,8 @@ from solo.models import SingletonModel
 from django.utils.text import slugify
 from django.urls import reverse
 from django.contrib.auth.models import User
+from phonenumber_field.modelfields import PhoneNumberField
+
 # Create your models here.
 
 class About(SingletonModel):
@@ -61,7 +63,7 @@ class ListFebric(models.Model):
         CHOICES = [('1', 'Contact me Directly'), ('2', 'Conduct Sale at Another Location')]
         parent = models.ForeignKey(Parent, on_delete=models.CASCADE)
         child = models.ForeignKey(Child, on_delete=models.CASCADE)
-        title = models.CharField(max_length=255, null=False, unique=True)
+        title = models.CharField(max_length=255, null=False, unique=True, error_messages={'unique':"The title is already taken."})
         price = models.IntegerField(null=False)
         sell_at = models.CharField(max_length=2,choices=CHOICES,default=1)
         link_ebay = models.URLField(max_length=255 ,null=False, blank=False)
@@ -69,7 +71,7 @@ class ListFebric(models.Model):
         instagram_profile = models.URLField(max_length=255, null=False, blank=False)
         user = models.ForeignKey(User,on_delete=models.CASCADE, null=False, blank=False)
         email = models.EmailField(null=False, blank=False)
-        phone = models.IntegerField(null=False)
+        phone = PhoneNumberField()
         slug = models.SlugField(max_length=255, blank=True, null=True)
         short_description = models.TextField()
         long_description = models.TextField()

@@ -35,7 +35,7 @@ class ListFebricForm(forms.ModelForm):
                     parent_id = int(self.data.get('parent'))
                     self.fields['child'].queryset = Child.objects.filter(parent_id=parent_id).order_by('name')
                 except (ValueError, TypeError):
-                    pass  # invalid input from the client; ignore and fallback to empty City queryset
+                    pass 
             elif self.instance.pk:
                 self.fields['child'].queryset = self.instance.parent.child_set.order_by('name')
 

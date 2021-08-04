@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     #third party
     'solo',
     'crispy_forms',
+    'phonenumber_field',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',

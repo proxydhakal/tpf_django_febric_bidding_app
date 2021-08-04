@@ -56,7 +56,6 @@ class ListCreateView(LoginRequiredMixin,SuccessMessageMixin,CreateView):
         return super().form_valid(form)
 
     def form_invalid(self, form):
-        print(form)
         return super(ListCreateView, self).form_invalid(form)
 
 
